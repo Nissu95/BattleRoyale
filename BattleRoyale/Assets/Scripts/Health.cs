@@ -29,8 +29,7 @@ public class Health : NetworkBehaviour
         if (currentHealth <= 0)
         {
             currentHealth = 0;
-            animator.SetTrigger("Death");
-            playerScript.DisablePlayer();
+            RpcDeath();
         }
     }
 
@@ -41,6 +40,13 @@ public class Health : NetworkBehaviour
         currentHealth += amount;
         if (currentHealth > maxHealth)
             currentHealth = maxHealth;
+    }
+
+    [ClientRpc]
+    void RpcDeath()
+    {
+            animator.SetTrigger("Death");
+            playerScript.DisablePlayer();
     }
 
     void OnChangeHealth(int health)
