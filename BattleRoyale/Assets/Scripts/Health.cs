@@ -25,6 +25,8 @@ public class Health : NetworkBehaviour
         if (!isServer)
             return;
 
+        Debug.Log("ouch");
+
         currentHealth -= amount;
         if (currentHealth <= 0)
         {
@@ -35,8 +37,12 @@ public class Health : NetworkBehaviour
 
     public void Heal(int amount)
     {
+
         if (!isServer)
             return;
+
+        Debug.Log("hola");
+
         currentHealth += amount;
         if (currentHealth > maxHealth)
             currentHealth = maxHealth;

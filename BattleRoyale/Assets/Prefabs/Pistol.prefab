@@ -110,7 +110,7 @@ MonoBehaviour:
     i13: 247
     i14: 147
     i15: 135
-  m_ServerOnly: 1
+  m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
 --- !u!212 &212392571075489752
 SpriteRenderer:
