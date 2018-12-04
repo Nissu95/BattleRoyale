@@ -3,14 +3,17 @@
 //[CreateAssetMenu(menuName = ("Game/Data/Items"))]
 public class ItemsData : ScriptableObject
 {
-    public enum ItemType { Weapon, FirstKit, Sales };
-
     [SerializeField] Sprite icon;
-    [SerializeField] ItemType item;
+    [SerializeField] ItemSlot.SlotType item;
 
     public Sprite GetIcon()
     {
         return icon;
+    }
+
+    public ItemSlot.SlotType GetSlotType()
+    {
+        return item;
     }
 
     public virtual void DoSomething(GameObject other) { }

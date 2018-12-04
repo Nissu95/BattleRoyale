@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 114458468321222886}
   - component: {fileID: 58130217674067126}
   - component: {fileID: 114911840604878960}
+  - component: {fileID: 114429008624854330}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -132,13 +133,14 @@ GameObject:
   - component: {fileID: 223486158386885686}
   - component: {fileID: 114483431916128046}
   - component: {fileID: 114397729447244678}
+  - component: {fileID: 114758104808237754}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1505874970234184
 GameObject:
   m_ObjectHideFlags: 1
@@ -209,6 +211,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1981807421147234
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 224025572542214604}
+  - component: {fileID: 222668266540551590}
+  - component: {fileID: 114653580337978782}
+  m_Layer: 5
+  m_Name: PickUP_Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
 --- !u!4 &4510165441640252
 Transform:
   m_ObjectHideFlags: 1
@@ -527,6 +546,20 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114429008624854330
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1158704030743962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd47ccdf63f45134e8fe63113a36cf29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponSlot: {fileID: 114485055557223184}
+  salesSlot: {fileID: 114992677708930938}
+  firstAidKitSlot: {fileID: 114834209136638842}
 --- !u!114 &114458468321222886
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -582,6 +615,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 0}
   slot: 0
+--- !u!114 &114653580337978782
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1981807421147234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 20
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "Press \xB4F\xB4 to pick up"
 --- !u!114 &114675523297091524
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -650,6 +716,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114758104808237754
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1504760162875844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27b77e342ec3f5f4f8eef7669172b1e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  go: {fileID: 1981807421147234}
 --- !u!114 &114791011832594632
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -890,6 +968,13 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1897248611673208}
   m_CullTransparentMesh: 0
+--- !u!222 &222668266540551590
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1981807421147234}
+  m_CullTransparentMesh: 0
 --- !u!222 &222727651447004624
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -931,6 +1016,24 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!224 &224025572542214604
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1981807421147234}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 224172004041115628}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: -0.000011444, y: 66}
+  m_SizeDelta: {x: 236.4, y: 42.300003}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224172004041115628
 RectTransform:
   m_ObjectHideFlags: 1
@@ -945,6 +1048,7 @@ RectTransform:
   - {fileID: 224903888949227772}
   - {fileID: 224436976720016306}
   - {fileID: 224973758051659344}
+  - {fileID: 224025572542214604}
   m_Father: {fileID: 4510165441640252}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
