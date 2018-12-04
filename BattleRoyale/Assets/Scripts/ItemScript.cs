@@ -5,6 +5,7 @@ public class ItemScript : NetworkBehaviour
 {
     [SerializeField] ItemsData data;
 
+    string playerTag = "Player";
     SpriteRenderer sp;
 
     private void Awake()
@@ -19,19 +20,22 @@ public class ItemScript : NetworkBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        collision.GetComponentInChildren<GetPickUpText>().GetGameObject().SetActive(true);
-        if (Input.GetKeyDown(KeyCode.F))
+        if (collision.CompareTag(playerTag))
         {
-            collision.GetComponentInChildren<GetPickUpText>().GetGameObject().SetActive(false);
-            ItemSlot slot = collision.GetComponent<AllPlayerItems>().GetItemSlot(data.GetSlotType());
-            slot.SetData(data);
-            Destroy(gameObject);
+            collision.GetComponentInChildren<GetPickUpText>().GetGameObject().SetActive(true);
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                collision.GetComponentInChildren<GetPickUpText>().GetGameObject().SetActive(false);
+                ItemSlot slot = collision.GetComponent<AllPlayerItems>().GetItemSlot(data.GetSlotType());
+                slot.SetData(data);
+                Destroy(gameObject);
+            }
         }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F) && collision.CompareTag(playerTag))
         {
             collision.GetComponentInChildren<GetPickUpText>().GetGameObject().SetActive(false);
             ItemSlot slot = collision.GetComponent<AllPlayerItems>().GetItemSlot(data.GetSlotType());
@@ -41,7 +45,8 @@ public class ItemScript : NetworkBehaviour
     }
 
     private void OnTriggerExit2D(Collider2D collision)
-    { 
+    {
+        if (collision.CompareTag(playerTag))
         collision.GetComponentInChildren<GetPickUpText>().GetGameObject().SetActive(false);
     }
 

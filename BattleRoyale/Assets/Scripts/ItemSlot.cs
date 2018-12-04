@@ -6,7 +6,7 @@ public class ItemSlot : MonoBehaviour
     public enum SlotType { Weapon, FirstKit, Sales };
 
     [SerializeField] ItemsData data;
-    [SerializeField] SlotType slot;
+    //[SerializeField] SlotType slot;
 
     Image itmImage;
     int stash = 0;
@@ -19,10 +19,7 @@ public class ItemSlot : MonoBehaviour
     void Start()
     {
         if (data)
-        {
             itmImage.sprite = data.GetIcon();
-            stash = 1;
-        }
         else
         {
             itmImage.enabled = false;
@@ -33,9 +30,7 @@ public class ItemSlot : MonoBehaviour
     public void SlotClick()
     {
         if (data)
-        {
             data.DoSomething(gameObject);
-        }
     }
 
     public void SetData(ItemsData _data)

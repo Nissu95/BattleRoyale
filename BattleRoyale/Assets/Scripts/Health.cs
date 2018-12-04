@@ -22,6 +22,9 @@ public class Health : NetworkBehaviour
 
     public void TakeDamage(int amount)
     {
+        if (!isServer)
+            return;
+
         currentHealth -= amount;
         if (currentHealth <= 0)
         {
@@ -33,6 +36,8 @@ public class Health : NetworkBehaviour
 
     public void Heal(int amount)
     {
+        if (!isServer)
+            return;
         currentHealth += amount;
         if (currentHealth > maxHealth)
             currentHealth = maxHealth;
