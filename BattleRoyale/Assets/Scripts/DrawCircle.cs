@@ -15,7 +15,7 @@ public class DrawCircle : MonoBehaviour
     private void Awake()
     {
         lineRenderer = GetComponent<LineRenderer>();
-        //SetUpCircle();
+        SetUpCircle();
     }
 
     public void SetUpCircle()

@@ -292,8 +292,8 @@ GameObject:
   - component: {fileID: 302494277}
   - component: {fileID: 302494276}
   - component: {fileID: 302494279}
-  - component: {fileID: 302494274}
   - component: {fileID: 302494275}
+  - component: {fileID: 302494274}
   m_Layer: 0
   m_Name: RedZone
   m_TagString: Untagged
@@ -312,7 +312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c60a963cc700fb46ba2e197bc6009cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 30
+  radius: 10
 --- !u!114 &302494275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -325,8 +325,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vertexCount: 40
-  lineWidht: 0.2
-  radius: 30
+  lineWidht: 0.1
+  radius: 10
 --- !u!58 &302494276
 CircleCollider2D:
   m_ObjectHideFlags: 0
