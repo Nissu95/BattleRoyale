@@ -22,10 +22,9 @@ public class Health : NetworkBehaviour
 
     public void TakeDamage(int amount)
     {
+        Debug.Log("ouch");
         if (!isServer)
             return;
-
-        Debug.Log("ouch");
 
         currentHealth -= amount;
         if (currentHealth <= 0)
@@ -37,11 +36,9 @@ public class Health : NetworkBehaviour
 
     public void Heal(int amount)
     {
-
+        Debug.Log("hola");
         if (!isServer)
             return;
-
-        Debug.Log("hola");
 
         currentHealth += amount;
         if (currentHealth > maxHealth)
