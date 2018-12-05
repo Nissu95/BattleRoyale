@@ -36,7 +36,6 @@ public class Health : NetworkBehaviour
 
     public void Heal(int amount)
     {
-        Debug.Log("hola");
         if (!isServer)
             return;
 

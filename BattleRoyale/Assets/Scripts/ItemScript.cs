@@ -29,8 +29,7 @@ public class ItemScript : NetworkBehaviour
                 ItemSlot slot = collision.GetComponent<AllPlayerItems>().GetItemSlot(data.GetSlotType());
                 slot.SetData(data);
                 slot.gameObject.SetActive(true);
-                //Destroy(gameObject);
-                NetworkServer.Destroy(gameObject);
+                CmdDestroyObject();
             }
         }
     }
@@ -43,8 +42,7 @@ public class ItemScript : NetworkBehaviour
             ItemSlot slot = collision.GetComponent<AllPlayerItems>().GetItemSlot(data.GetSlotType());
             slot.SetData(data);
             slot.gameObject.SetActive(true);
-            //Destroy(gameObject);
-            NetworkServer.Destroy(gameObject);
+            CmdDestroyObject();
         }
     }
 
@@ -52,6 +50,13 @@ public class ItemScript : NetworkBehaviour
     {
         if (collision.CompareTag(playerTag))
         collision.GetComponentInChildren<GetPickUpText>().GetGameObject().SetActive(false);
+    }
+
+    [Command]
+    void CmdDestroyObject()
+    {
+        NetworkServer.Destroy(this.gameObject);
+        //NetworkIdentity.Destroy(gameObject);
     }
 
 }
