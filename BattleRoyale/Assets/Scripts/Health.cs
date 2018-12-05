@@ -22,7 +22,6 @@ public class Health : NetworkBehaviour
 
     public void TakeDamage(int amount)
     {
-        Debug.Log("ouch");
         if (!isServer)
             return;
 
