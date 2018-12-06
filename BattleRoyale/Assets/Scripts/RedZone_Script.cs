@@ -4,7 +4,8 @@ using System.Collections.Generic;
 
 public class RedZone_Script : NetworkBehaviour
 {
-    [SerializeField] float radius = 30;
+    [SyncVar]
+    public float radius = 30;
 
     CircleCollider2D circleCollider;
     DrawCircle drawCircle;
@@ -25,7 +26,13 @@ public class RedZone_Script : NetworkBehaviour
             return;
 
         if (radius > 1)
-            radius -= 1f * Time.deltaTime;
+            RpcUpdate();
+    }
+
+    [ClientRpc]
+    void RpcUpdate()
+    {
+        radius -= 1f * Time.deltaTime;
         circleCollider.radius = radius;
         drawCircle.SetRadius(radius);
         drawCircle.SetUpCircle();

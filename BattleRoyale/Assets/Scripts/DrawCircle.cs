@@ -1,13 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using UnityEngine.Networking;
 using UnityEngine;
 
 [RequireComponent(typeof(LineRenderer))]
-public class DrawCircle : MonoBehaviour
+public class DrawCircle : NetworkBehaviour
 {
     [SerializeField] int vertexCount = 40;
     [SerializeField] float lineWidht = 0.2f;
-    [SerializeField] float radius;
+
+    [SyncVar]
+    float radius;
     //[SerializeField] bool circleFillScreen;
 
     LineRenderer lineRenderer;

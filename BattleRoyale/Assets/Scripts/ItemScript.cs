@@ -20,7 +20,7 @@ public class ItemScript : NetworkBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag(playerTag))
+        if (collision.CompareTag(playerTag) && collision.gameObject.GetComponent<Player>().isLocalPlayer)
         {
             collision.GetComponentInChildren<GetPickUpText>().GetGameObject().SetActive(true);
             if (Input.GetKeyDown(KeyCode.F))
@@ -30,33 +30,48 @@ public class ItemScript : NetworkBehaviour
                 slot.SetData(data);
                 slot.gameObject.SetActive(true);
                 CmdDestroyObject();
+                //Destroy(gameObject);
+                //RpcDestroyObject();
             }
         }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (Input.GetKeyDown(KeyCode.F) && collision.CompareTag(playerTag))
+        if (Input.GetKeyDown(KeyCode.F) && collision.CompareTag(playerTag) && collision.gameObject.GetComponent<Player>().isLocalPlayer)
         {
             collision.GetComponentInChildren<GetPickUpText>().GetGameObject().SetActive(false);
             ItemSlot slot = collision.GetComponent<AllPlayerItems>().GetItemSlot(data.GetSlotType());
             slot.SetData(data);
             slot.gameObject.SetActive(true);
             CmdDestroyObject();
+            //Destroy(gameObject);
+            //RpcDestroyObject();
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag(playerTag))
+        if (collision.CompareTag(playerTag) && collision.gameObject.GetComponent<Player>().isLocalPlayer)
         collision.GetComponentInChildren<GetPickUpText>().GetGameObject().SetActive(false);
     }
 
     [Command]
     void CmdDestroyObject()
     {
+        Destroy(this.gameObject);
+        //NetworkServer.Destroy(this.gameObject);
+        //RpcDestroyObject();
+    }
+
+    /*[ClientRpc]
+    void RpcDestroyObject()
+    {
+        if (!isServer)
+            return;
+
         NetworkServer.Destroy(this.gameObject);
         //NetworkIdentity.Destroy(gameObject);
-    }
+    }*/
 
 }

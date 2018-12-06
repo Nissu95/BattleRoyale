@@ -16,7 +16,7 @@ public class AllPlayerItems : MonoBehaviour
                 return weaponSlot;
             case ItemSlot.SlotType.FirstKit:
                 return firstAidKitSlot;
-            case ItemSlot.SlotType.Sales:
+            case ItemSlot.SlotType.Bandages:
                 return salesSlot;
             default:
                 return null;
