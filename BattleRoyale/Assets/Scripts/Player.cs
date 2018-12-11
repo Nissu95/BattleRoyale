@@ -14,6 +14,7 @@ public class Player : NetworkBehaviour
     [SerializeField] ToggleEvent onToggleShared;
     [SerializeField] ToggleEvent onToggleLocal;
     [SerializeField] ToggleEvent onToggleRemote;
+    string itemTag = "Item";
 
     void Start()
     {
@@ -70,5 +71,50 @@ public class Player : NetworkBehaviour
             onToggleLocal.Invoke(true);
         else
             onToggleRemote.Invoke(true);
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (!isLocalPlayer)
+            return;
+
+        if (collision.CompareTag(itemTag))
+        {
+            GetComponentInChildren<GetPickUpText>().GetGameObject().SetActive(true);
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                GetComponentInChildren<GetPickUpText>().GetGameObject().SetActive(false);
+
+                ItemsData data = collision.gameObject.GetComponent<ItemScript>().GetData();
+
+                ItemSlot slot = GetComponent<AllPlayerItems>().GetItemSlot(data.GetSlotType());
+                slot.SetData(data);
+                slot.gameObject.SetActive(true);
+                
+                CmdDestroyObject(collision.gameObject);
+            }
+        }
+    }
+
+    [Command]
+    void CmdDestroyObject(GameObject objectToDestroy)
+    {
+        RpcDestroyObject(objectToDestroy);
+        Destroy(objectToDestroy);
+    }
+
+    [ClientRpc]
+    void RpcDestroyObject(GameObject objectToDestroy)
+    {
+        Destroy(objectToDestroy);
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (!isLocalPlayer)
+            return;
+
+        if (collision.CompareTag(itemTag))
+            GetComponentInChildren<GetPickUpText>().GetGameObject().SetActive(false);
     }
 }

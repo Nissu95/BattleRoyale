@@ -5,7 +5,6 @@ public class ItemScript : NetworkBehaviour
 {
     [SerializeField] ItemsData data;
 
-    string playerTag = "Player";
     SpriteRenderer sp;
 
     private void Awake()
@@ -18,7 +17,7 @@ public class ItemScript : NetworkBehaviour
         sp.sprite = data.GetIcon();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    /*private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag(playerTag))
         {
@@ -57,6 +56,11 @@ public class ItemScript : NetworkBehaviour
     {
         NetworkServer.Destroy(this.gameObject);
         //NetworkIdentity.Destroy(gameObject);
+    }*/
+
+    public ItemsData GetData()
+    {
+        return data;
     }
 
 }
