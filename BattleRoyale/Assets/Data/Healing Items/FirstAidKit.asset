@@ -11,6 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47ff11bfb5d02084f87aa7e12d15bf8c, type: 3}
   m_Name: FirstAidKit
   m_EditorClassIdentifier: 
-  icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  icon: {fileID: 21300000, guid: 99ab3a683bafa004680521b7d4e6ff8a, type: 3}
   item: 1
   healthAmount: 100

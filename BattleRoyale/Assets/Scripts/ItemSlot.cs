@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ItemSlot : MonoBehaviour
 {
-    public enum SlotType { Weapon, FirstKit, Sales };
+    public enum SlotType { Weapon, FirstKit, Bandages };
 
     [SerializeField] ItemsData data;
     //[SerializeField] SlotType slot;

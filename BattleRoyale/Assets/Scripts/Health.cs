@@ -13,6 +13,7 @@ public class Health : NetworkBehaviour
 
     Animator animator;
     Player playerScript;
+    bool isOutOfZone = false;
 
     private void Start()
     {
@@ -20,9 +21,17 @@ public class Health : NetworkBehaviour
         playerScript = GetComponent<Player>();
     }
 
+
+    private void FixedUpdate()
+    {
+        if (isOutOfZone)
+        {
+            TakeDamage(1);
+        }
+    }
+
     public void TakeDamage(int amount)
     {
-        Debug.Log("ouch");
         if (!isServer)
             return;
 
@@ -47,8 +56,14 @@ public class Health : NetworkBehaviour
     [ClientRpc]
     void RpcDeath()
     {
-            animator.SetTrigger("Death");
-            playerScript.DisablePlayer();
+        animator.SetTrigger("Death");
+        playerScript.DisablePlayer();
+        isOutOfZone = false;
+    }
+
+    public void SetOutOfZone(bool _isOutOfZone)
+    {
+        isOutOfZone = _isOutOfZone;
     }
 
     void OnChangeHealth(int health)

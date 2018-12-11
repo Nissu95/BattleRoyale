@@ -10,6 +10,7 @@ public class Player : NetworkBehaviour
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] Transform bulletSpawn;
     [SerializeField] float speed;
+    [SerializeField] Transform characterTransform;
 
     [SerializeField] ToggleEvent onToggleShared;
     [SerializeField] ToggleEvent onToggleLocal;
@@ -29,9 +30,10 @@ public class Player : NetworkBehaviour
         Vector3 move = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
         transform.position += move * speed * Time.deltaTime;
         
+
         Vector2 mouseScreenPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 direction = (mouseScreenPosition - (Vector2)transform.position).normalized;
-        transform.up = direction;
+        Vector2 direction = (mouseScreenPosition - (Vector2)characterTransform.position).normalized;
+        characterTransform.up = direction;
 
 
         if (Input.GetMouseButtonDown(0))
