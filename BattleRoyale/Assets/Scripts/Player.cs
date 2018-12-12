@@ -55,6 +55,13 @@ public class Player : NetworkBehaviour
         Destroy(bullet, 2.0f);
     }
 
+    [Command]
+    public void CmdHeal(HealingItemData data)
+    {
+        Health health = GetComponent<Health>();
+        health.Heal(data.healthAmount);
+    }
+
     public void DisablePlayer()
     {
         onToggleShared.Invoke(false);

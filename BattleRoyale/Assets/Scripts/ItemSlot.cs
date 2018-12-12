@@ -30,7 +30,10 @@ public class ItemSlot : MonoBehaviour
     public void SlotClick()
     {
         if (data)
+        {
+            GetComponentInParent<Player>().CmdHeal((HealingItemData)data);
             data.DoSomething(gameObject);
+        }
     }
 
     public void SetData(ItemsData _data)

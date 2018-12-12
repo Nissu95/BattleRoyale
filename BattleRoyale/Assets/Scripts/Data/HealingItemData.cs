@@ -3,16 +3,16 @@
 [CreateAssetMenu(menuName = ("Game/Data/Healing_Items"))]
 public class HealingItemData : ItemsData
 {
-    [SerializeField] int healthAmount;
+    public int healthAmount;
 
-    Health health;
+    //Health health;
 
     public override void DoSomething(GameObject other)
     {
-        health = other.GetComponentInParent<Health>();
+        //health = other.GetComponentInParent<Health>();
         ItemSlot itemSlot = other.GetComponent<ItemSlot>();
         itemSlot.StashSubstraction(1);
-        health.Heal(healthAmount);
+        //health.Heal(healthAmount);
         if (itemSlot.GetStash() <= 0)
         {
             other.SetActive(false);
