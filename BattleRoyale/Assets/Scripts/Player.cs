@@ -10,10 +10,12 @@ public class Player : NetworkBehaviour
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] Transform bulletSpawn;
     [SerializeField] float speed;
+    [SerializeField] Transform characterTransform;
 
     [SerializeField] ToggleEvent onToggleShared;
     [SerializeField] ToggleEvent onToggleLocal;
     [SerializeField] ToggleEvent onToggleRemote;
+    string itemTag = "Item";
 
     void Start()
     {
@@ -28,9 +30,10 @@ public class Player : NetworkBehaviour
         Vector3 move = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
         transform.position += move * speed * Time.deltaTime;
         
+
         Vector2 mouseScreenPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 direction = (mouseScreenPosition - (Vector2)transform.position).normalized;
-        transform.up = direction;
+        Vector2 direction = (mouseScreenPosition - (Vector2)characterTransform.position).normalized;
+        characterTransform.up = direction;
 
 
         if (Input.GetMouseButtonDown(0))
@@ -52,6 +55,13 @@ public class Player : NetworkBehaviour
         Destroy(bullet, 2.0f);
     }
 
+    [Command]
+    public void CmdHeal(HealingItemData data)
+    {
+        Health health = GetComponent<Health>();
+        health.Heal(data.healthAmount);
+    }
+
     public void DisablePlayer()
     {
         onToggleShared.Invoke(false);
@@ -70,5 +80,50 @@ public class Player : NetworkBehaviour
             onToggleLocal.Invoke(true);
         else
             onToggleRemote.Invoke(true);
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (!isLocalPlayer)
+            return;
+
+        if (collision.CompareTag(itemTag))
+        {
+            GetComponentInChildren<GetPickUpText>().GetGameObject().SetActive(true);
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                GetComponentInChildren<GetPickUpText>().GetGameObject().SetActive(false);
+
+                ItemsData data = collision.gameObject.GetComponent<ItemScript>().GetData();
+
+                ItemSlot slot = GetComponent<AllPlayerItems>().GetItemSlot(data.GetSlotType());
+                slot.SetData(data);
+                slot.gameObject.SetActive(true);
+                
+                CmdDestroyObject(collision.gameObject);
+            }
+        }
+    }
+
+    [Command]
+    void CmdDestroyObject(GameObject objectToDestroy)
+    {
+        RpcDestroyObject(objectToDestroy);
+        Destroy(objectToDestroy);
+    }
+
+    [ClientRpc]
+    void RpcDestroyObject(GameObject objectToDestroy)
+    {
+        Destroy(objectToDestroy);
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (!isLocalPlayer)
+            return;
+
+        if (collision.CompareTag(itemTag))
+            GetComponentInChildren<GetPickUpText>().GetGameObject().SetActive(false);
     }
 }
