@@ -79,11 +79,14 @@ MonoBehaviour:
   m_PlayerPrefab: {fileID: 1158704030743962, guid: 45997540fcb478b4a94d80839d4b03c9,
     type: 2}
   m_AutoCreatePlayer: 1
-  m_PlayerSpawnMethod: 0
+  m_PlayerSpawnMethod: 1
   m_OfflineScene: 
   m_OnlineScene: 
   m_SpawnPrefabs:
   - {fileID: 1274560517618190, guid: 5650217e00645c1478e3ae6da0c28573, type: 2}
+  - {fileID: 1847400648159424, guid: 31171a3468c05bb4cae56356cb14e85d, type: 2}
+  - {fileID: 1411003869513850, guid: ffc1a905225352648ba406620174c53f, type: 2}
+  - {fileID: 1195114849974736, guid: 93edcfa4b53c85349b855d14a31dd5d7, type: 2}
   m_CustomConfig: 0
   m_MaxConnections: 4
   m_ConnectionConfig:
