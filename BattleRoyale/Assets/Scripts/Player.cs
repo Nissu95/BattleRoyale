@@ -11,7 +11,7 @@ public class Player : NetworkBehaviour
     [SerializeField] Transform bulletSpawn;
     [SerializeField] float speed;
     [SerializeField] Transform characterTransform;
-
+    [SerializeField] GameObject loseCanvas;
     [SerializeField] ToggleEvent onToggleShared;
     [SerializeField] ToggleEvent onToggleLocal;
     [SerializeField] ToggleEvent onToggleRemote;
@@ -67,7 +67,11 @@ public class Player : NetworkBehaviour
         onToggleShared.Invoke(false);
 
         if (isLocalPlayer)
+        {
+            loseCanvas.SetActive(true);
+            Camera.main.transform.parent = null;
             onToggleLocal.Invoke(false);
+        }
         else
             onToggleRemote.Invoke(false);
     }
