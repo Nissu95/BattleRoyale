@@ -68,6 +68,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b3e38c9dca2e0648815a35eac151c0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cantPlayers: 3
 --- !u!114 &114897385943598932
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -140,7 +141,7 @@ MonoBehaviour:
     m_MaxTimerTimeout: 12000
     m_MinNetSimulatorTimeout: 1
     m_MaxNetSimulatorTimeout: 12000
-  m_Channels: 
+  m_Channels: 0500000000000000
   m_UseWebSockets: 0
   m_UseSimulator: 0
   m_SimulatedLatency: 1
