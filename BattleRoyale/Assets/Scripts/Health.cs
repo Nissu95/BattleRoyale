@@ -56,6 +56,7 @@ public class Health : NetworkBehaviour
     [ClientRpc]
     void RpcDeath()
     {
+        GameManager.instance.cantPlayers--;
         animator.SetTrigger("Death");
         playerScript.DisablePlayer();
         isOutOfZone = false;

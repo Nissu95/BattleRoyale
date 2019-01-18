@@ -12,6 +12,7 @@ public class Player : NetworkBehaviour
     [SerializeField] float speed;
     [SerializeField] Transform characterTransform;
     [SerializeField] GameObject loseCanvas;
+    [SerializeField] GameObject winCanvas;
     [SerializeField] ToggleEvent onToggleShared;
     [SerializeField] ToggleEvent onToggleLocal;
     [SerializeField] ToggleEvent onToggleRemote;
@@ -38,6 +39,17 @@ public class Player : NetworkBehaviour
 
         if (Input.GetMouseButtonDown(0))
             CmdFire();
+
+        if (GameManager.instance.cantPlayers == 1)
+        {
+            onToggleShared.Invoke(false);
+            if (isLocalPlayer)
+            {
+                winCanvas.SetActive(true);
+                Camera.main.transform.parent = null;
+                onToggleLocal.Invoke(false);
+            }
+        }
     }
 
     [Command]

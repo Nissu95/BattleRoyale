@@ -5,6 +5,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
 
+    public int cantPlayers = 0;
+
     void Awake()
     {
         if (instance == null)
@@ -14,7 +16,5 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         
         DontDestroyOnLoad(gameObject);
-
-        //NetworkManager.singleton.maxConnections = 3;
     }
 }
