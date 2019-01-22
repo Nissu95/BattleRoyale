@@ -1354,6 +1354,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 1274560517618190, guid: 5650217e00645c1478e3ae6da0c28573,
     type: 2}
+  deadCharacter: {fileID: 1650071936339350, guid: 0fb1563b2ff17304db16a483fd111027,
+    type: 2}
   bulletSpawn: {fileID: 4725375026920524}
   speed: 5
   characterTransform: {fileID: 4321118508791234}

@@ -8,6 +8,7 @@ public class ToggleEvent : UnityEvent<bool>{}
 public class Player : NetworkBehaviour
 {
     [SerializeField] GameObject bulletPrefab;
+    [SerializeField] GameObject deadCharacter;
     [SerializeField] Transform bulletSpawn;
     [SerializeField] float speed;
     [SerializeField] Transform characterTransform;
@@ -60,7 +61,7 @@ public class Player : NetworkBehaviour
             bulletSpawn.position,
             bulletSpawn.rotation);
         
-        bullet.GetComponent<Rigidbody2D>().velocity = bullet.transform.up * 6;
+        bullet.GetComponent<Rigidbody2D>().velocity = bullet.transform.up * 10;
 
         NetworkServer.Spawn(bullet);
 
@@ -77,6 +78,8 @@ public class Player : NetworkBehaviour
     public void DisablePlayer()
     {
         onToggleShared.Invoke(false);
+        Instantiate<GameObject>(deadCharacter, transform.position, characterTransform.rotation);
+        GetComponentInChildren<SpriteRenderer>().enabled = false;
 
         if (isLocalPlayer)
         {
