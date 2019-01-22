@@ -18,9 +18,14 @@ public class Player : NetworkBehaviour
     [SerializeField] ToggleEvent onToggleLocal;
     [SerializeField] ToggleEvent onToggleRemote;
     string itemTag = "Item";
+    
+    private Rigidbody2D rb2d;       //Store a reference to the Rigidbody2D component required to use 2D Physics.
 
     void Start()
     {
+        //Get and store a reference to the Rigidbody2D component so that we can access it.
+        rb2d = GetComponent<Rigidbody2D>();
+
         EnablePlayer();
     }
     
@@ -29,8 +34,17 @@ public class Player : NetworkBehaviour
         if (!isLocalPlayer)
             return;
 
-        Vector3 move = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
-        transform.position += move * speed * Time.deltaTime;
+        //Store the current horizontal input in the float moveHorizontal.
+        float moveHorizontal = Input.GetAxis("Horizontal");
+
+        //Store the current vertical input in the float moveVertical.
+        float moveVertical = Input.GetAxis("Vertical");
+
+        //Use the two store floats to create a new Vector2 variable movement.
+        Vector2 movement = new Vector2(moveHorizontal, moveVertical);
+
+        //Add velocity to our Rigidbody2D rb2d supplying movement multiplied by speed to move our player.
+        rb2d.velocity = (movement * speed);
         
 
         Vector2 mouseScreenPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
