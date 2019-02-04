@@ -5,7 +5,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
 
-    public int cantPlayers = 0;
+    public int maxCantPlayers;
+    public int cantPlayers;
 
     void Awake()
     {
@@ -16,5 +17,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         
         DontDestroyOnLoad(gameObject);
+
+        cantPlayers = maxCantPlayers;
     }
 }

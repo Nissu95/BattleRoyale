@@ -342,21 +342,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 114676550521508560, guid: 0d6485567ed9a1b4d956117051221a93,
-        type: 2}
-      propertyPath: cantPlayers
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114897385943598932, guid: 0d6485567ed9a1b4d956117051221a93,
-        type: 2}
-      propertyPath: m_MinPlayers
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114897385943598932, guid: 0d6485567ed9a1b4d956117051221a93,
-        type: 2}
-      propertyPath: m_MaxPlayers
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d6485567ed9a1b4d956117051221a93, type: 2}
   m_IsPrefabAsset: 0

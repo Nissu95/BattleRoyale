@@ -68,7 +68,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b3e38c9dca2e0648815a35eac151c0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cantPlayers: 3
+  maxCantPlayers: 2
+  cantPlayers: 2
 --- !u!114 &114897385943598932
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -155,9 +156,9 @@ MonoBehaviour:
   isNetworkActive: 0
   matchMaker: {fileID: 0}
   m_ShowLobbyGUI: 1
-  m_MaxPlayers: 3
+  m_MaxPlayers: 2
   m_MaxPlayersPerConnection: 1
-  m_MinPlayers: 3
+  m_MinPlayers: 2
   m_LobbyPlayerPrefab: {fileID: 114285067418675022, guid: 141dcf7bb08d76148ba793aabe52c319,
     type: 2}
   m_GamePlayerPrefab: {fileID: 1158704030743962, guid: 45997540fcb478b4a94d80839d4b03c9,

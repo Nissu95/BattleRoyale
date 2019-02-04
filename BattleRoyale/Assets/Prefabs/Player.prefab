@@ -117,6 +117,7 @@ GameObject:
   - component: {fileID: 223499270034610776}
   - component: {fileID: 114193537830458148}
   - component: {fileID: 114541973909052112}
+  - component: {fileID: 114458098592178294}
   m_Layer: 5
   m_Name: LoseCanvas
   m_TagString: Untagged
@@ -274,6 +275,7 @@ GameObject:
   - component: {fileID: 223141844159011516}
   - component: {fileID: 114385463595743030}
   - component: {fileID: 114722632882939122}
+  - component: {fileID: 114133276351798116}
   m_Layer: 5
   m_Name: WinCanvas
   m_TagString: Untagged
@@ -689,6 +691,17 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114133276351798116
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1566100161366498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 210b6f71aa93443439d5d507986bf92f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114157048789403630
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1026,6 +1039,17 @@ MonoBehaviour:
   weaponSlot: {fileID: 114485055557223184}
   salesSlot: {fileID: 114992677708930938}
   firstAidKitSlot: {fileID: 114834209136638842}
+--- !u!114 &114458098592178294
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1264869478073538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 210b6f71aa93443439d5d507986bf92f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114458468321222886
 MonoBehaviour:
   m_ObjectHideFlags: 1
