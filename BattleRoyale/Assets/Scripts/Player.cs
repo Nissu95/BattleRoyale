@@ -60,7 +60,9 @@ public class Player : NetworkBehaviour
             onToggleShared.Invoke(false);
             if (isLocalPlayer)
             {
-                winCanvas.SetActive(true);
+                if (!loseCanvas.activeInHierarchy)
+                    winCanvas.SetActive(true);
+
                 Camera.main.transform.parent = null;
                 onToggleLocal.Invoke(false);
             }
